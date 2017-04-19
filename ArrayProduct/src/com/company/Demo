@@ -1,0 +1,94 @@
+#include <iostream>
+#include<map>
+#include<algorithm>
+
+using namespace std;
+
+bool fun (int i,int j) { return (i>j); }
+void Find_Pair(int arra[],int arrb[],int l1,int l2,int k){
+    sort(arrb,arrb+l2,fun);
+    map<int,bool>M;
+    int c=0;
+    for(int i=0;i<l1;i++)
+       M[arra[i]]=true;
+     for(int i=0;i<l2;i++){
+
+         if(M[k-arrb[i]]){
+             if(c)
+             cout<<", ";
+             cout<<k- arrb[i]<<" "<<arrb[i];
+             c++;
+         }
+     }
+      cout<<endl;
+    return ;
+}
+int main() {
+int test_case;
+cin >>test_case;
+while(test_case--){
+    int l1,l2,k;
+    cin >>l1>>l2>>k;
+    int arra[l1],arrb[l2];
+    for(int i=0;i<l1;i++)
+        cin >>arra[i];
+    for(int i=0;i<l2;i++)
+        cin >>arrb[i];
+    Find_Pair(arra,arrb,l1,l2,k);
+
+  }
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.company;
+
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 1st Array Limit:\t");
+        int len = sc.nextInt();
+        System.out.println("Enter 2nd Array Limit:\t");
+        int len1 = sc.nextInt();
+        int[] a = new int[len];
+        int[] b = new int[len1];
+
+        int i,j,x;
+        System.out.println("Enter Sum Value");
+        x= sc.nextInt();
+        System.out.println("Enter "+len+" elements:\t");
+        for (i = 0; i < len; i++) {
+            a[i] = sc.nextInt();
+        }
+        System.out.println("Enter "+len1+" elements:\t");
+        for (j = 0; j<len1; j++){
+            b[j]=sc.nextInt();
+        }
+        String delimiter = "";
+        for (i = 0; i < len; i++) {
+            for (j = 0; j < len1; j++) {
+                if(a[i]+b[j]==x){
+                    System.out.print( delimiter );
+                    System.out.print(a[i]+" "+b[j]);
+                    delimiter=",";
+                }
+            }
+        }
+    }
+}
